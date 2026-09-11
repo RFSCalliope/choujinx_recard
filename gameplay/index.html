@@ -3,91 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Choujin X</title>
+    <title>Choujin X: Re:awake</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- ELEMEN AUDIO BACKGROUND MUSIC (BGM) -->
+    <!-- Masukkan link/path file MP3 kamu di atribut src di bawah ini -->
+    <audio id="bgm-player" loop src="../media/audio/bgm.mp3"></audio>
 
-    <div id="main-menu" class="menu-container">
-        <h1 class="title">CHOUJIN X: Recard</h1>
-        <p class="subtitle">Card Battle</p>
-        <div class="menu-buttons">
-            <button onclick="showDifficultyMenu()">PLAY GAME</button>
-            <button id="btn-continue" onclick="continueGame()" disabled>CONTINUE</button>
-            <button onclick="showOptionsMenu()">OPTIONS</button>
-            <button onclick="closeGame()">EXIT</button>
-        </div>
-    </div>
-
-    <div id="difficulty-menu" class="menu-container hidden">
-        <h2>PILIH TINGKAT KESULITAN</h2>
-        <div class="menu-buttons">
-            <button onclick="startGame('easy')">EASY</button>
-            <button onclick="startGame('normal')">NORMAL</button>
-            <button onclick="startGame('hard')">HARD</button>
-            <button onclick="backToMainMenu()">KEMBALI</button>
-        </div>
-    </div>
-
-    <div id="options-menu" class="menu-container hidden">
-        <h2>PENGATURAN</h2>
-        <div class="option-item">
-            <label for="sfx-volume">Volume SFX:</label>
-            <input type="range" id="sfx-volume" min="0" max="100" value="80" onchange="updateAudioSettings()">
-        </div>
-        <div class="option-item">
-            <label for="fullscreen-toggle">Fullscreen:</label>
-            <input type="checkbox" id="fullscreen-toggle" onchange="toggleFullscreen()">
-        </div>
-        <div class="menu-buttons" style="margin-top: 20px;">
-            <button onclick="backToMainMenu()">KEMBALI</button>
-        </div>
-    </div>
-
-    <div id="duel-board" class="game-container hidden">
-        <div class="field enemy-field">
-            <div class="profile">
-                <img id="enemy-avatar" class="avatar-img" src="" alt="Musuh">
-                <h3 id="enemy-name">TOKIO KUROHARA</h3>
-                <div class="hp-bar-border"><div id="enemy-hp" class="hp-bar"></div></div>
-                <span id="enemy-hp-text">HP: 100 / 100</span>
-                <div class="shield-text" id="enemy-shield-text">Shield: 0</div>
-            </div>
-            <div id="enemy-active-card" class="card-slot">Kartu Musuh</div>
-        </div>
-
-        <div class="status-bar">
-            <span>DIFF: <strong id="diff-text">NORMAL</strong></span>
-            <span>MANA: <strong id="mana-text">3 / 3</strong></span>
-            <span>AETHER GAUGE: <strong id="aether-text">0%</strong></span>
-        </div>
-
-        <div class="log-box" id="log">Selamat datang di Dark Aether!</div>
-
-        <div class="field player-field">
-            <div id="player-active-card" class="card-slot">Kartu Kamu</div>
-            <div class="profile">
-                <img id="player-avatar" class="avatar-img" src="" alt="Sietta">
-                <h3 id="player-title">SIETTA (CROW)</h3>
-                <div class="hp-bar-border"><div id="player-hp" class="hp-bar"></div></div>
-                <span id="player-hp-text">HP: 100 / 100</span>
-                <div class="shield-text" id="player-shield-text">Shield: 0</div>
+    <div id="game-container">
+        <!-- Main Menu -->
+        <div id="main-menu" class="screen">
+            <h1 class="title">CHOUJIN X</h1>
+            <h2 class="subtitle">RE:AWAKE</h2>
+            <div class="menu-buttons">
+                <button onclick="startGameSequence()">[ PLAY GAME ]</button>
+                <button onclick="showCharacterMenu()">[ CHARACTERS ]</button>
+                <button onclick="showOptionsMenu()">[ OPTIONS ]</button>
+                <button onclick="showCreditsMenu()">[ CREDITS ]</button>
             </div>
         </div>
 
-        <div class="controls">
-            <span>Sisa Dek: <strong id="deck-count">0</strong></span>
-            <button id="end-turn-btn" onclick="endPlayerTurn()">SELESAI GILIRAN</button>
+        <!-- Difficulty Selection Menu -->
+        <div id="difficulty-menu" class="screen hidden">
+            <h2>PILIH TINGKAT KESULITAN</h2>
+            <div class="menu-buttons">
+                <button onclick="startGame('easy')">[ EASY ] - 3 CHOUJIN</button>
+                <button onclick="startGame('normal')">[ NORMAL ] - 6 CHOUJIN</button>
+                <button onclick="startGame('hard')">[ HARD ] - 9 CHOUJIN</button>
+                <button class="btn-back" onclick="showMainMenu()">[ KEMBALI ]</button>
+            </div>
         </div>
 
-        <div class="hand-container" id="hand"></div>
-    </div>
+        <!-- Character Info / Encylopedia Menu -->
+        <div id="character-menu" class="screen hidden">
+            <h2>INFORMASI CHOUJIN</h2>
+            <div class="char-info-container">
+                <div class="char-list" id="char-list-buttons"></div>
+                <div class="char-detail-box">
+                    <div class="char-photos">
+                        <a id="char-wiki-link-base" href="#" target="_blank" title="Buka Wiki Base Form">
+                            <img id="char-detail-img-base" src="" alt="Base Form">
+                            <span>BASE FORM</span>
+                        </a>
+                        <a id="char-wiki-link-choujin" href="#" target="_blank" title="Buka Wiki Choujin Form">
+                            <img id="char-detail-img-choujin" src="" alt="Choujin Form">
+                            <span>CHOUJIN FORM</span>
+                        </a>
+                    </div>
+                    <h3 id="char-detail-name">NAME</h3>
+                    <p id="char-detail-desc">Pilih karakter untuk melihat lore.</p>
+                </div>
+            </div>
+            <button class="btn-back" onclick="showMainMenu()">[ KEMBALI ]</button>
+        </div>
 
-    <div id="end-screen" class="menu-container hidden">
-        <h1 id="end-title">VICTORY!</h1>
-        <p id="end-message">Pesan Hasil Permainan</p>
-        <div class="menu-buttons" style="margin-top:20px;">
-            <button onclick="backToMainMenu()">MENU UTAMA</button>
+        <!-- Options Menu -->
+        <div id="options-menu" class="screen hidden">
+            <h2>PENGATURAN</h2>
+            <div class="option-item">
+                <label for="volume-slider">SFX Volume:</label>
+                <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="0.5" onchange="updateVolume(this.value)">
+            </div>
+            <div class="option-item">
+                <label for="bgm-slider">BGM Volume:</label>
+                <input type="range" id="bgm-slider" min="0" max="1" step="0.1" value="0.3" onchange="updateBGMVolume(this.value)">
+            </div>
+            <div class="option-item">
+                <button onclick="toggleFullscreen()">[ TOGGLE FULLSCREEN ]</button>
+            </div>
+            <button class="btn-back" onclick="showMainMenu()">[ KEMBALI ]</button>
+        </div>
+
+        <!-- Credits Menu -->
+        <div id="credits-menu" class="screen hidden">
+            <h2>CREDITS</h2>
+            <div class="credits-box">
+                <p class="credit-role">ORIGINAL WORK</p>
+                <p class="credit-name">Choujin X by Sui Ishida</p>
+
+                <p class="credit-role">PROJECT TITLE</p>
+                <p class="credit-name">Choujin X: Re:awake</p>
+
+                <p class="credit-role">VISUAL DIRECTION</p>
+                <p class="credit-name">RAFI FAIZ SALMAN</p>
+            </div>
+            <button class="btn-back" onclick="showMainMenu()">[ KEMBALI ]</button>
+        </div>
+
+        <!-- Card Reward Modal Screen -->
+        <div id="reward-screen" class="screen hidden">
+            <h2>KEMENANGAN! PILIH KARTU TAMBAHAN</h2>
+            <p>Pilih 1 kartu untuk memperkuat dek Sietta Minakken:</p>
+            <div id="reward-cards-container"></div>
+        </div>
+
+        <!-- Gameplay Board -->
+        <div id="duel-board" class="screen hidden">
+            <div class="top-bar">
+                <span id="diff-text">MODE: NORMAL</span>
+                <span id="enemy-count-text">MUSUH: 1/6</span>
+            </div>
+
+            <div class="battle-area">
+                <div class="character-card enemy-side">
+                    <h3 id="enemy-name">MUSUH</h3>
+                    <div class="avatar-frame">
+                        <img id="enemy-avatar" src="" alt="Enemy">
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">HP: <span id="enemy-hp-text">100/100</span></div>
+                        <div class="bar-outer"><div id="enemy-hp-bar" class="bar-inner hp"></div></div>
+                        <div class="stat-label">Shield: <span id="enemy-shield-text">0</span></div>
+                    </div>
+                </div>
+
+                <div class="center-log">
+                    <div id="log-box">Pertempuran dimulai...</div>
+                    <div id="chaos-container">
+                        <span>CHAOS GAUGE: <span id="chaos-text">0%</span></span>
+                        <div class="bar-outer"><div id="chaos-bar" class="bar-inner chaos"></div></div>
+                        <div id="chaos-mode-badge" class="hidden">CHAOS STATE ACTIVE (+15 ATK)</div>
+                    </div>
+                </div>
+
+                <div class="character-card player-side">
+                    <h3>SIETTA MINAKKEN</h3>
+                    <div class="avatar-frame">
+                        <img id="player-avatar" src="../media/photo/Sietta_Profile.webp" alt="Sietta Minakken">
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-label">HP: <span id="player-hp-text">100/100</span></div>
+                        <div class="bar-outer"><div id="player-hp-bar" class="bar-inner hp"></div></div>
+                        <div class="stat-label">Shield: <span id="player-shield-text">0</span></div>
+                        <div class="stat-label">Stamina: <span id="player-mana-text">3/3</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls-area">
+                <div id="hand-container"></div>
+                <div class="action-buttons">
+                    <div>Sisa Dek: <span id="deck-count">12</span></div>
+                    <button id="btn-end-turn" onclick="endPlayerTurn()">[ END TURN ]</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- End Screen -->
+        <div id="end-screen" class="screen hidden">
+            <h1 id="end-title">VICTORY</h1>
+            <p id="end-message"></p>
+            <button onclick="showMainMenu()">[ MENU UTAMA ]</button>
         </div>
     </div>
 
