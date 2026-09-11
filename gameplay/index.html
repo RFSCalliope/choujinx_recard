@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choujin X</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="main-menu" class="menu-container">
+        <h1 class="title">CHOUJIN X: Recard</h1>
+        <p class="subtitle">Card Battle</p>
+        <div class="menu-buttons">
+            <button onclick="showDifficultyMenu()">PLAY GAME</button>
+            <button id="btn-continue" onclick="continueGame()" disabled>CONTINUE</button>
+            <button onclick="showOptionsMenu()">OPTIONS</button>
+            <button onclick="closeGame()">EXIT</button>
+        </div>
+    </div>
+
+    <div id="difficulty-menu" class="menu-container hidden">
+        <h2>PILIH TINGKAT KESULITAN</h2>
+        <div class="menu-buttons">
+            <button onclick="startGame('easy')">EASY</button>
+            <button onclick="startGame('normal')">NORMAL</button>
+            <button onclick="startGame('hard')">HARD</button>
+            <button onclick="backToMainMenu()">KEMBALI</button>
+        </div>
+    </div>
+
+    <div id="options-menu" class="menu-container hidden">
+        <h2>PENGATURAN</h2>
+        <div class="option-item">
+            <label for="sfx-volume">Volume SFX:</label>
+            <input type="range" id="sfx-volume" min="0" max="100" value="80" onchange="updateAudioSettings()">
+        </div>
+        <div class="option-item">
+            <label for="fullscreen-toggle">Fullscreen:</label>
+            <input type="checkbox" id="fullscreen-toggle" onchange="toggleFullscreen()">
+        </div>
+        <div class="menu-buttons" style="margin-top: 20px;">
+            <button onclick="backToMainMenu()">KEMBALI</button>
+        </div>
+    </div>
+
+    <div id="duel-board" class="game-container hidden">
+        <div class="field enemy-field">
+            <div class="profile">
+                <img id="enemy-avatar" class="avatar-img" src="" alt="Musuh">
+                <h3 id="enemy-name">TOKIO KUROHARA</h3>
+                <div class="hp-bar-border"><div id="enemy-hp" class="hp-bar"></div></div>
+                <span id="enemy-hp-text">HP: 100 / 100</span>
+                <div class="shield-text" id="enemy-shield-text">Shield: 0</div>
+            </div>
+            <div id="enemy-active-card" class="card-slot">Kartu Musuh</div>
+        </div>
+
+        <div class="status-bar">
+            <span>DIFF: <strong id="diff-text">NORMAL</strong></span>
+            <span>MANA: <strong id="mana-text">3 / 3</strong></span>
+            <span>AETHER GAUGE: <strong id="aether-text">0%</strong></span>
+        </div>
+
+        <div class="log-box" id="log">Selamat datang di Dark Aether!</div>
+
+        <div class="field player-field">
+            <div id="player-active-card" class="card-slot">Kartu Kamu</div>
+            <div class="profile">
+                <img id="player-avatar" class="avatar-img" src="" alt="Sietta">
+                <h3 id="player-title">SIETTA (CROW)</h3>
+                <div class="hp-bar-border"><div id="player-hp" class="hp-bar"></div></div>
+                <span id="player-hp-text">HP: 100 / 100</span>
+                <div class="shield-text" id="player-shield-text">Shield: 0</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <span>Sisa Dek: <strong id="deck-count">0</strong></span>
+            <button id="end-turn-btn" onclick="endPlayerTurn()">SELESAI GILIRAN</button>
+        </div>
+
+        <div class="hand-container" id="hand"></div>
+    </div>
+
+    <div id="end-screen" class="menu-container hidden">
+        <h1 id="end-title">VICTORY!</h1>
+        <p id="end-message">Pesan Hasil Permainan</p>
+        <div class="menu-buttons" style="margin-top:20px;">
+            <button onclick="backToMainMenu()">MENU UTAMA</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
