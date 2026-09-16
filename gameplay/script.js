@@ -1,4 +1,3 @@
-// Database Karakter Lengkap (Termasuk Semua Musuh Battle)
 const characterLore = [
     {
         name: "SIETTA MINAKKEN",
@@ -36,11 +35,11 @@ const characterLore = [
         desc: "Sword Choujin. Keturunan klan Kagomura yang ahli bertarung menggunakan teknik pedang dan manifestasi bilah-bilah ilmu hitam legendaris."
     },
     {
-        name: "MAIKO MOMOMA",
-        baseImage: "../media/photo/Momoma_Maiko.webp",
-        choujinImage: "../media/photo/Momoma_Choujin.webp",
-        wikiUrl: "https://choujin-x.fandom.com/wiki/Maiko_Momoma",
-        desc: "Paper Choujin. Keberadaan tangguh di Yamato Mori yang mampu memanipulasi struktur kertas menjadi pertahanan super keras atau senjata tajam."
+        name: "MAIKO MOMONA",
+        baseImage: "../media/photo/Momoma_Maiko.png",
+        choujinImage: "../media/photo/Momoma_Maiko_Outfit.png",
+        wikiUrl: "https://choujin-x.fandom.com/wiki/Maiko_Momona",
+        desc: "Super Strength Choujin. Anggota Yamato Mori dengan kekuatan fisik mentah luar biasa yang dibatasi oleh pakaian khusus agar tubuhnya tidak hancur oleh kekuatannya sendiri."
     },
     {
         name: "TEZUYA SHIOZAKI",
@@ -51,15 +50,15 @@ const characterLore = [
     },
     {
         name: "CHANDRA HUME",
-        baseImage: "../media/photo/Chandra_Hume.webp",
-        choujinImage: "../media/photo/Chandra_Choujin.webp",
+        baseImage: "../media/photo/Chandra_Hume.png",
+        choujinImage: "../media/photo/Chandra_Choujin.png",
         wikiUrl: "https://choujin-x.fandom.com/wiki/Chandra_Hume",
         desc: "Smoke Choujin. Tokoh antagonis penguasa kabut dan asap bertekanan tinggi yang mampu membutakan mata serta membakar musuhnya."
     },
     {
         name: "NARI TSUMUJI",
-        baseImage: "../media/photo/Nari_Tsumuji.webp",
-        choujinImage: "../media/photo/Nari_Choujin.webp",
+        baseImage: "../media/photo/Nari_Tsumuji.png",
+        choujinImage: "../media/photo/Nari_Choujin.png",
         wikiUrl: "https://choujin-x.fandom.com/wiki/Nari_Tsumuji",
         desc: "Snake Choujin. Musuh yang sangat lincah dengan kemampuan mengubah seluruh anatomi tubuhnya menjadi ular raksasa berbisa mematikan."
     },
@@ -72,35 +71,33 @@ const characterLore = [
     }
 ];
 
-// Database Musuh Per Mode (Diselaraskan nama karakter sesuai perbaikan)
 const enemiesBase = {
     easy: [
         { name: "AZUMA HIGASHI", baseHP: 100, image: "../media/photo/Azuma_Higashi.webp", deck: [{ name: "Iron Fist", baseAtk: 12 }, { name: "Hero Rush", baseAtk: 18 }] },
-        { name: "ELY OTTA", baseHP: 120, image: "../media/photo/Ely_Otta.webp", deck: [{ name: "Smoke Screen", baseAtk: 15 }, { name: "Fire Blast", baseAtk: 22 }] },
+        { name: "ELY OTTA", baseHP: 120, image: "../media/photo/Ely_Otta.png", deck: [{ name: "Smoke Screen", baseAtk: 15 }, { name: "Fire Blast", baseAtk: 22 }] },
         { name: "TEZUYA SHIOZAKI", baseHP: 140, image: "../media/photo/Tezuya_Shiozaki.webp", deck: [{ name: "Sink Pitch", baseAtk: 20 }] }
     ],
     normal: [
         { name: "AZUMA HIGASHI", choujinName: "AZUMA (IRON FORM)", baseHP: 130, image: "../media/photo/Azuma_Higashi.webp", choujinImage: "../media/photo/Azuma_Choujin.webp", deck: [{ name: "Iron Strike", baseAtk: 20 }] },
-        { name: "ELY OTTA", choujinName: "ELY (FIRE FORM)", baseHP: 150, image: "../media/photo/Ely_Otta.webp", choujinImage: "../media/photo/Ely_Choujin.webp", deck: [{ name: "Flame Tempest", baseAtk: 25 }] },
+        { name: "ELY OTTA", choujinName: "ELY (FIRE FORM)", baseHP: 150, image: "../media/photo/Ely_Otta.png", choujinImage: "../media/photo/Ely_Choujin.png", deck: [{ name: "Flame Tempest", baseAtk: 25 }] },
         { name: "SIMON KAGOMURA", choujinName: "SIMON (SWORD FORM)", baseHP: 170, image: "../media/photo/Simon_Kagomura.webp", choujinImage: "../media/photo/Simon_Choujin.webp", deck: [{ name: "Blade Dance", baseAtk: 28 }] },
-        { name: "MAIKO MOMOMA", choujinName: "MOMOMA (PAPER FORM)", baseHP: 180, image: "../media/photo/Momoma_Maiku.webp", choujinImage: "../media/photo/Momoma_Choujin.webp", deck: [{ name: "Paper Cut", baseAtk: 30 }] },
-        { name: "CHANDRA HUME", choujinName: "CHANDRA (SMOKE FORM)", baseHP: 200, image: "../media/photo/Chandra_Hume.webp", choujinImage: "../media/photo/Chandra_Choujin.webp", deck: [{ name: "Asphyxiate", baseAtk: 32 }] },
-        { name: "NARI TSUMUJI", choujinName: "NARI (SNAKE FORM)", baseHP: 220, image: "../media/photo/Nari_Tsumuji.webp", choujinImage: "../media/photo/Nari_Choujin.webp", deck: [{ name: "Venom Bite", baseAtk: 35 }] }
+        { name: "MAIKO MOMOMA", choujinName: "MAIKO (POWER FORM)", baseHP: 180, image: "../media/photo/Momoma_Maiko.png", choujinImage: "../media/photo/Momoma_Maiko_Outfit.png", deck: [{ name: "Crushing Blow", baseAtk: 30 }] },
+        { name: "CHANDRA HUME", choujinName: "CHANDRA (SMOKE FORM)", baseHP: 200, image: "../media/photo/Chandra_Hume.png", choujinImage: "../media/photo/Chandra_Choujin.png", deck: [{ name: "Asphyxiate", baseAtk: 32 }] },
+        { name: "NARI TSUMUJI", choujinName: "NARI (SNAKE FORM)", baseHP: 220, image: "../media/photo/Nari_Tsumuji.png", choujinImage: "../media/photo/Nari_Choujin.png", deck: [{ name: "Venom Bite", baseAtk: 35 }] }
     ],
     hard: [
         { name: "AZUMA HIGASHI", choujinName: "AZUMA (IRON FORM)", baseHP: 150, image: "../media/photo/Azuma_Higashi.webp", choujinImage: "../media/photo/Azuma_Choujin.webp", deck: [{ name: "Iron Strike", baseAtk: 22 }] },
-        { name: "ELY OTTA", choujinName: "ELY (FIRE FORM)", baseHP: 170, image: "../media/photo/Ely_Otta.webp", choujinImage: "../media/photo/Ely_Choujin.webp", deck: [{ name: "Flame Tempest", baseAtk: 28 }] },
+        { name: "ELY OTTA", choujinName: "ELY (FIRE FORM)", baseHP: 170, image: "../media/photo/Ely_Otta.png", choujinImage: "../media/photo/Ely_Choujin.png", deck: [{ name: "Flame Tempest", baseAtk: 28 }] },
         { name: "SIMON KAGOMURA", choujinName: "SIMON (SWORD FORM)", baseHP: 190, image: "../media/photo/Simon_Kagomura.webp", choujinImage: "../media/photo/Simon_Choujin.webp", deck: [{ name: "Blade Dance", baseAtk: 30 }] },
-        { name: "TOKIO KUROHARA", choujinName: "TOKIO (VULTURE FORM)", baseHP: 210, image: "../media/photo/Tokio_Kurohara.webp", choujinImage: "../media/photo/Tokio_Choujin.webp", deck: [{ name: "Vulture Claw", baseAtk: 32 }] },
-        { name: "CHANDRA HUME", choujinName: "CHANDRA (SMOKE FORM)", baseHP: 230, image: "../media/photo/Chandra_Hume.webp", choujinImage: "../media/photo/Chandra_Choujin.webp", deck: [{ name: "Asphyxiate", baseAtk: 35 }] },
-        { name: "NARI TSUMUJI", choujinName: "NARI (SNAKE FORM)", baseHP: 250, image: "../media/photo/Nari_Tsumuji.webp", choujinImage: "../media/photo/Nari_Choujin.webp", deck: [{ name: "Venom Bite", baseAtk: 38 }] },
+        { name: "TOKIO KUROHARA", choujinName: "TOKIO (VULTURE FORM)", baseHP: 210, image: "../media/photo/Tokio_Kurohara.png", choujinImage: "../media/photo/Tokio_Choujin.png", deck: [{ name: "Vulture Claw", baseAtk: 32 }] },
+        { name: "CHANDRA HUME", choujinName: "CHANDRA (SMOKE FORM)", baseHP: 230, image: "../media/photo/Chandra_Hume.png", choujinImage: "../media/photo/Chandra_Choujin.png", deck: [{ name: "Asphyxiate", baseAtk: 35 }] },
+        { name: "NARI TSUMUJI", choujinName: "NARI (SNAKE FORM)", baseHP: 250, image: "../media/photo/Nari_Tsumuji.png", choujinImage: "../media/photo/Nari_Choujin.png", deck: [{ name: "Venom Bite", baseAtk: 38 }] },
         { name: "TEZUYA SHIOZAKI", choujinName: "SHIOZAKI (SINK FORM)", baseHP: 270, image: "../media/photo/Tezuya_Shiozaki.webp", choujinImage: "../media/photo/Shiozaki_Choujin.webp", deck: [{ name: "Sink Pitch", baseAtk: 40 }] },
-        { name: "MAIKO MOMOMA", choujinName: "MOMOMA (PAPER FORM)", baseHP: 290, image: "../media/photo/Momoma_Maiku.webp", choujinImage: "../media/photo/Momoma_Choujin.webp", deck: [{ name: "Paper Cut", baseAtk: 42 }] },
+        { name: "MAIKO MOMOMA", choujinName: "MAIKO (POWER FORM)", baseHP: 290, image: "../media/photo/Momoma_Maiko.png", choujinImage: "../media/photo/Momoma_Maiko_Outfit.png", deck: [{ name: "Crushing Blow", baseAtk: 42 }] },
         { name: "SORA SIRUHA", choujinName: "ZORA (GOD CHOUJIN)", baseHP: 380, image: "../media/photo/Sora_Siruha.webp", choujinImage: "../media/photo/Zora_Choujin.webp", deck: [{ name: "X Prophecy", baseAtk: 48 }] }
     ]
 };
 
-// Reward Pool Kartu
 const rewardCardPool = [
     { title: "Shadow Slash", type: "attack", cost: 2, val: 38, desc: "Tebasan bayangan pekat (+38 Atk)." },
     { title: "Crow Shield", type: "shield", cost: 1, val: 30, desc: "Pelindung bulu gagak (+30 Shield)." },
@@ -109,7 +106,6 @@ const rewardCardPool = [
     { title: "Chaos Barrier", type: "shield", cost: 2, val: 45, desc: "Perisai Chaos tebal (+45 Shield)." }
 ];
 
-// State Variabel Game
 let currentDifficulty = 'normal';
 let currentEnemyIndex = 0;
 let playerHP = 100, playerMaxHP = 100, playerShield = 0, playerMana = 3, maxMana = 3;
@@ -120,7 +116,6 @@ let masterDeck = [], playerDeck = [], playerHand = [];
 let isTurnBusy = false;
 let soundVolume = 0.5, bgmVolume = 0.3;
 
-// Pengaturan Audio BGM & SFX
 function tryPlayBGM() {
     const bgm = document.getElementById("bgm-player");
     if (bgm) {
@@ -170,7 +165,6 @@ function toggleFullscreen() {
     }
 }
 
-// Navigasi Screen
 function showScreen(screenId) {
     document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
     document.getElementById(screenId).classList.remove('hidden');
@@ -260,7 +254,6 @@ function selectCharacterDetail(index) {
     document.getElementById("char-detail-desc").innerText = char.desc;
 }
 
-// Inisialisasi Dek Sietta
 function initMasterDeck() {
     masterDeck = [
         { title: "Cakar Crow", type: "attack", cost: 1, val: 18, desc: "Cakar kegelapan ringan." },
@@ -396,6 +389,11 @@ function loadEnemy() {
     document.getElementById("enemy-avatar").src = enemy.image;
     document.getElementById("enemy-count-text").innerText = `MUSUH: ${currentEnemyIndex + 1}/${list.length}`;
     document.getElementById("log-box").innerText = "Pertempuran dimulai...";
+
+    const playerAvatar = document.getElementById("player-avatar");
+    if (playerAvatar) {
+        playerAvatar.src = characterLore[0].baseImage;
+    }
     
     updateUI();
 }
@@ -412,7 +410,6 @@ function endPlayerTurn() {
         const list = enemiesBase[currentDifficulty];
         const enemy = list[currentEnemyIndex];
 
-        // Mekanisme Transformasi Choujin Form Musuh
         if (currentDifficulty !== 'easy' && !isEnemyChaosMode) {
             enemyChaosGauge += 35;
             if (enemyChaosGauge >= 100) {
@@ -445,7 +442,6 @@ function endPlayerTurn() {
             document.getElementById("log-box").innerText = `${enemy.name} melancarkan ${randomCard.name} (${dmg} Dmg)!`;
         }
 
-        // PERBAIKAN: Selalu reset isTurnBusy ketika giliran selesai atau game over
         isTurnBusy = false;
 
         if (playerHP <= 0) {

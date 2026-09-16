@@ -7,17 +7,15 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- ELEMEN AUDIO BACKGROUND MUSIC (BGM) -->
-    <!-- Masukkan link/path file MP3 kamu di atribut src di bawah ini -->
-    <audio id="bgm-player" loop src="../media/audio/bgm.mp3"></audio>
+    <audio id="bgm-player" loop src="../media/audio/Continue.mp3">
+    </audio>
 
     <div id="game-container">
-        <!-- Main Menu -->
         <div id="main-menu" class="screen">
             <h1 class="title">CHOUJIN X</h1>
             <h2 class="subtitle">RE:AWAKE</h2>
             <div class="menu-buttons">
-                <button onclick="startGameSequence()">[ PLAY GAME ]</button>
+                <button onclick="startGameSequence()">[ PLAY ]</button>
                 <button onclick="showCharacterMenu()">[ CHARACTERS ]</button>
                 <button onclick="showOptionsMenu()">[ OPTIONS ]</button>
                 <button onclick="showCreditsMenu()">[ CREDITS ]</button>
@@ -26,18 +24,17 @@
 
         <!-- Difficulty Selection Menu -->
         <div id="difficulty-menu" class="screen hidden">
-            <h2>PILIH TINGKAT KESULITAN</h2>
+            <h2>CHOOSE DIFFICULTY</h2>
             <div class="menu-buttons">
-                <button onclick="startGame('easy')">[ EASY ] - 3 CHOUJIN</button>
-                <button onclick="startGame('normal')">[ NORMAL ] - 6 CHOUJIN</button>
-                <button onclick="startGame('hard')">[ HARD ] - 9 CHOUJIN</button>
-                <button class="btn-back" onclick="showMainMenu()">[ KEMBALI ]</button>
+                <button onclick="startGame('easy')">[ EASY ]</button>
+                <button onclick="startGame('normal')">[ NORMAL ]</button>
+                <button onclick="startGame('hard')">[ HARD ]</button>
+                <button class="btn-back" onclick="showMainMenu()">[ BACK ]</button>
             </div>
         </div>
 
-        <!-- Character Info / Encylopedia Menu -->
         <div id="character-menu" class="screen hidden">
-            <h2>INFORMASI CHOUJIN</h2>
+            <h2>CHARACTER INFORMATION</h2>
             <div class="char-info-container">
                 <div class="char-list" id="char-list-buttons"></div>
                 <div class="char-detail-box">
@@ -46,19 +43,18 @@
                             <img id="char-detail-img-base" src="" alt="Base Form">
                             <span>BASE FORM</span>
                         </a>
-                        <a id="char-wiki-link-choujin" href="#" target="_blank" title="Buka Wiki Choujin Form">
+                        <a id="char-wiki-link-choujin" href="#" target="_blank" title="Buka Wiki Choujin / Super Form">
                             <img id="char-detail-img-choujin" src="" alt="Choujin Form">
-                            <span>CHOUJIN FORM</span>
+                            <span>CHOUJIN / SUPER FORM</span>
                         </a>
                     </div>
                     <h3 id="char-detail-name">NAME</h3>
-                    <p id="char-detail-desc">Pilih karakter untuk melihat lore.</p>
+                    <p id="char-detail-desc">Choose a character to view its lore.</p>
                 </div>
             </div>
-            <button class="btn-back" onclick="showMainMenu()">[ KEMBALI ]</button>
+            <button class="btn-back" onclick="showMainMenu()">[ BACK ]</button>
         </div>
 
-        <!-- Options Menu -->
         <div id="options-menu" class="screen hidden">
             <h2>PENGATURAN</h2>
             <div class="option-item">
@@ -72,10 +68,9 @@
             <div class="option-item">
                 <button onclick="toggleFullscreen()">[ TOGGLE FULLSCREEN ]</button>
             </div>
-            <button class="btn-back" onclick="showMainMenu()">[ KEMBALI ]</button>
+            <button class="btn-back" onclick="showMainMenu()">[ BACK ]</button>
         </div>
 
-        <!-- Credits Menu -->
         <div id="credits-menu" class="screen hidden">
             <h2>CREDITS</h2>
             <div class="credits-box">
@@ -85,29 +80,27 @@
                 <p class="credit-role">PROJECT TITLE</p>
                 <p class="credit-name">Choujin X: Re:awake</p>
 
-                <p class="credit-role">VISUAL DIRECTION</p>
+                <p class="credit-role">GAME DESIGN</p>
                 <p class="credit-name">RAFI FAIZ SALMAN</p>
             </div>
-            <button class="btn-back" onclick="showMainMenu()">[ KEMBALI ]</button>
+            <button class="btn-back" onclick="showMainMenu()">[ BACK ]</button>
         </div>
 
-        <!-- Card Reward Modal Screen -->
         <div id="reward-screen" class="screen hidden">
-            <h2>KEMENANGAN! PILIH KARTU TAMBAHAN</h2>
-            <p>Pilih 1 kartu untuk memperkuat dek Sietta Minakken:</p>
+            <h2>VICTORY! CHOOSE AN ADDITIONAL CARD</h2>
+            <p>Choose a card to strengthen Sietta Minakken's deck:</p>
             <div id="reward-cards-container"></div>
         </div>
 
-        <!-- Gameplay Board -->
         <div id="duel-board" class="screen hidden">
             <div class="top-bar">
                 <span id="diff-text">MODE: NORMAL</span>
-                <span id="enemy-count-text">MUSUH: 1/6</span>
+                <span id="enemy-count-text">ENEMY: 1/6</span>
             </div>
 
             <div class="battle-area">
                 <div class="character-card enemy-side">
-                    <h3 id="enemy-name">MUSUH</h3>
+                    <h3 id="enemy-name">ENEMY</h3>
                     <div class="avatar-frame">
                         <img id="enemy-avatar" src="" alt="Enemy">
                     </div>
@@ -119,7 +112,7 @@
                 </div>
 
                 <div class="center-log">
-                    <div id="log-box">Pertempuran dimulai...</div>
+                    <div id="log-box">BEGIN</div>
                     <div id="chaos-container">
                         <span>CHAOS GAUGE: <span id="chaos-text">0%</span></span>
                         <div class="bar-outer"><div id="chaos-bar" class="bar-inner chaos"></div></div>
@@ -144,17 +137,16 @@
             <div class="controls-area">
                 <div id="hand-container"></div>
                 <div class="action-buttons">
-                    <div>Sisa Dek: <span id="deck-count">12</span></div>
+                    <div>Decks Left: <span id="deck-count">12</span></div>
                     <button id="btn-end-turn" onclick="endPlayerTurn()">[ END TURN ]</button>
                 </div>
             </div>
         </div>
 
-        <!-- End Screen -->
         <div id="end-screen" class="screen hidden">
             <h1 id="end-title">VICTORY</h1>
             <p id="end-message"></p>
-            <button onclick="showMainMenu()">[ MENU UTAMA ]</button>
+            <button onclick="showMainMenu()">[ BACK TO MENU ]</button>
         </div>
     </div>
 

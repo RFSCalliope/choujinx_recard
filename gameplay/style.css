@@ -90,7 +90,6 @@ button:hover {
     transform: translateX(4px);
 }
 
-/* Informasi Karakter Layout */
 .char-info-container {
     display: flex;
     gap: 20px;
@@ -154,20 +153,18 @@ button:hover {
     font-size: 0.75rem;
 }
 
-/* Perbesar ukuran wadah dan gambar di Informasi Choujin */
 .char-detail-img, 
 #char-detail-img-base, 
 #char-detail-img-choujin {
-    width: 180px !important;       /* Lebar foto diperbesar */
-    height: 220px !important;      /* Tinggi foto diperbesar agar proporsional */
-    object-fit: cover;             /* Memastikan gambar tidak gepeng */
-    border: 2px solid #fff;        /* Bingkai estetis ala game retro/horror */
-    image-rendering: -webkit-optimize-contrast; /* Menjaga ketajaman piksel gambar */
+    width: 180px !important;      
+    height: 220px !important;      
+    object-fit: cover;            
+    border: 2px solid #fff;        
+    image-rendering: -webkit-optimize-contrast; 
     image-rendering: crisp-edges;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8); /* Memberikan efek kedalaman */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8); 
 }
 
-/* Pastikan wadah flex-nya muat dan posisinya rapi di tengah */
 #character-menu .char-images-container, 
 .character-viewer-images {
     display: flex;
@@ -195,7 +192,6 @@ button:hover {
     line-height: 1.5;
 }
 
-/* Modal Tambah Kartu Baru */
 #reward-cards-container {
     display: flex;
     gap: 20px;
@@ -208,7 +204,6 @@ button:hover {
     font-size: 0.85rem;
 }
 
-/* Options Screen Inputs */
 .option-item {
     display: flex;
     align-items: center;
@@ -222,7 +217,6 @@ button:hover {
     cursor: pointer;
 }
 
-/* Credits Window */
 .credits-box {
     background: #0d0d0d;
     border: 1px solid #262626;
@@ -244,7 +238,6 @@ button:hover {
     color: #e5e7eb;
 }
 
-/* Gameplay Section */
 .top-bar {
     width: 100%;
     display: flex;
